@@ -7,7 +7,8 @@ let stateName = document.getElementById("stateName");
 const countryName = "United States";
 let timeEl = document.getElementById("time");
 let dateEl = document.getElementById("date");
-const todaysHead = document.getElementById("today-heading")
+let todaysHead = document.getElementById("today-heading")
+
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -29,30 +30,68 @@ dateEl.innerHTML = months[month] + " " + date + ", " + year
 
 },1000 );
 
+const weatherForm = document.getElementById('weatherForm');
+const cityInput = document.getElementById('cityInput');
+const temperature = document.getElementById('temperature');
+const humidity = document.getElementById('humidity');
+const windSpeed = document.getElementById('windSpeed');
+let icon = document.getElementById("weather-icon");
 
-var apiKey = "7c006ed91aa6938b8ed4f5598cc3df4c";
-var geoApi = "http://api.openweathermap.org/geo/1.0/direct?q=Asheboro&NC&US&limit={limit}&appid=$(apiKey)"
-
-subBtn.addEventListener("click", getWeather())
-
-   function getWeather() {
-
-    var name = cityName;
-
-    if (cityName !== "") {
-        todaysHead.innerHTML = "Today's weather in:" + cityName;
-    }
-
-    fetch (geoApi)    
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
-}
+weatherForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
 
     
+    let cityName = cityInput.value;
+    if (!cityName) return;
+
+
+    var apiKey1 = `7c006ed91aa6938b8ed4f5598cc3df4c`;
+    const apiUrlToday = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey1}&units=imperial`;
+    var apiUrlDays = `api.openweathermap.org/data/2.5/forecast?q=${cityName},{state code},{country code}&appid={API key}`
+
+    try {
+        const response = await fetch(apiUrlToday);
+        const data = await response.json();
+
+        console.log(data);
+        console.log(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
+        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+        temperature.textContent = `Temperature: ${data.main.temp}°F`;
+        humidity.innerHTML = `Humidity: ${data.main.humidity}%`;
+        windSpeed.innerHTML = `Wind Speed: ${data.wind.speed} m/s`;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+        temperature.textContent = 'Weather data not available';
+        humidity.textContent = '';
+        windSpeed.textContent = '';
+    }
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        console.log(data);
+        console.log(`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`)
+        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`);
+        temperature.textContent = `Temperature: ${data.main.temp}°F`;
+        humidity.innerHTML = `Humidity: ${data.main.humidity}%`;
+        windSpeed.innerHTML = `Wind Speed: ${data.wind.speed} m/s`;
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+        temperature.textContent = 'Weather data not available';
+        humidity.textContent = '';
+        windSpeed.textContent = '';
+    }
+    
+
+
+    // localStorage.setItem() {
+
+    }
+);
+
+todaysHead = "Today's Weather in " + cityName;
+
     
 

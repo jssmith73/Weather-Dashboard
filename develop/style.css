@@ -23,7 +23,21 @@ body {
 .current-info {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+}
+
+.current-info .others {
+    display: flex;
+    flex-direction: column;
+    background: rgba(24, 24, 27, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px 0 10px 10px;
+    border: 1px solid white;
+}
+
+#city-log {
+    height: 200px;
+    margin-top: 30px;
 }
 
 .date-container .time {
@@ -54,39 +68,21 @@ body {
     font-weight: 200;
 }
 
-.current-info .others {
-    display: flex;
-    flex-direction: column;
-    background: rgba(24, 24, 27, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    margin: 10px 0;
-    border: 1px solid white;
-}
 
-.current-info .others .weather-item {
+
+/* .current-info .others .weather-item {
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .weather-info {
     margin: 50px;
     padding: 15px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: space-between;
     font-size: larger;
-    border-radius: 3px white;
-}
-
-.extra-info {
-    flex-direction: column;
-}
-
-todays-temp {
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 .future-forecast {

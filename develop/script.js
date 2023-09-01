@@ -1,13 +1,14 @@
 
 //City Search
 var subBtn = document.getElementById("submitBtn");
-const search = document.getElementById("citySearch");
+const search = document.getElementById("cityInput");
 let cityName = document.getElementById("cityName");
 let stateName = document.getElementById("stateName");
 const countryName = "United States";
 let timeEl = document.getElementById("time");
 let dateEl = document.getElementById("date");
-let todaysHead = document.getElementById("today-heading")
+let todaysHead = document.getElementById("today-heading");
+let log = document.getElementById("city-log");
 
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -30,6 +31,18 @@ dateEl.innerHTML = months[month] + " " + date + ", " + year
 
 },1000 );
 
+function getHistory () {
+    const btn = document.createElement("button");
+    btn.innerText = localStorage.getItem("City");
+    document.getElementById("city-log").appendChild(btn);
+
+    btn.addEventListener("click", function() {
+        search.value = ["City"]
+})
+}
+
+getHistory();
+
 const weatherForm = document.getElementById('weatherForm');
 const cityInput = document.getElementById('cityInput');
 const temperature = document.getElementById('temperature');
@@ -43,12 +56,12 @@ weatherForm.addEventListener('submit', async (e) => {
 
     
     let cityName = cityInput.value;
+    let state = stateName.value;
     if (!cityName) return;
-
 
     var apiKey1 = `7c006ed91aa6938b8ed4f5598cc3df4c`;
     const apiUrlToday = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey1}&units=imperial`;
-    var apiUrlDays = `api.openweathermap.org/data/2.5/forecast?q=${cityName},{state code},{country code}&appid={API key}`
+    // var apiUrlDays = `api.openweathermap.org/data/2.5/forecast?q=${cityName},${state},${countryName}&appid=${apiKey1}`
 
     try {
         const response = await fetch(apiUrlToday);
@@ -60,6 +73,7 @@ weatherForm.addEventListener('submit', async (e) => {
         temperature.textContent = `Temperature: ${data.main.temp}°F`;
         humidity.innerHTML = `Humidity: ${data.main.humidity}%`;
         windSpeed.innerHTML = `Wind Speed: ${data.wind.speed} m/s`;
+        todaysHead.innerHTML = "Today in " + cityName;
     } catch (error) {
         console.error('Error fetching weather data:', error);
         temperature.textContent = 'Weather data not available';
@@ -67,8 +81,16 @@ weatherForm.addEventListener('submit', async (e) => {
         windSpeed.textContent = '';
     }
 
+    function updateHead() {
+        todaysHead = "Today's Weather in " + cityName;
+        }
+        
+        updateHead();
+
+    //Future Forecast
+
     try {
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrlToday);
         const data = await response.json();
 
         console.log(data);
@@ -77,6 +99,7 @@ weatherForm.addEventListener('submit', async (e) => {
         temperature.textContent = `Temperature: ${data.main.temp}°F`;
         humidity.innerHTML = `Humidity: ${data.main.humidity}%`;
         windSpeed.innerHTML = `Wind Speed: ${data.wind.speed} m/s`;
+        localStorage.setItem("City", cityName);
     } catch (error) {
         console.error('Error fetching weather data:', error);
         temperature.textContent = 'Weather data not available';
@@ -91,7 +114,6 @@ weatherForm.addEventListener('submit', async (e) => {
     }
 );
 
-todaysHead = "Today's Weather in " + cityName;
 
     
 

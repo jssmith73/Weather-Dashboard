@@ -11,17 +11,17 @@
     
     <div class="container">
         <div class="current-info">
-
-            <div class="date-container">
-                <div class="time" id="time">
-                <span id="am-pm">PM</span>
-                </div>
+           <div class="date-container">
+               <div class="time" id="time">
+                   <span id="am-pm">PM</span>
+               </div>
                 <div class="date" id="date">
                 </div>
+            </div>
 
-                <form class="others" id="weatherForm">
-                <input class="citySearch" id="cityInput" type="text" placeholder="City Name" style="text-align: center;"> 
-                <select id="stateName" name="country-state" style="text-align: center;">
+        <form class="others" id="weatherForm">
+            <input class="citySearch" id="cityInput" type="text" placeholder="City Name" style="text-align: center;"> 
+            <select id="stateName" name="country-state" style="text-align: center;">
     <option value="">Select state</option>
     <option value="AL">Alabama</option>
     <option value="AK">Alaska</option>
@@ -89,33 +89,37 @@
     <option value="WV">West Virginia</option>
     <option value="WI">Wisconsin</option>
     <option value="WY">Wyoming</option>
-                </select>
-                <button class="submitBtn" id="submitBtn">Submit</button>
-            </form>
+            </select>
+            <button class="submitBtn" id="submitBtn">Submit</button>
+            <div class="others" id="city-log">
             </div>
-               <div class="others" id="current-weather-items" style="width: 100vh; height: 50vh;">
-                <h2 id="today-heading">Today</h2>
+        </form>
 
-
-            <div class="weather-info">
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" id="weather-icon" class="w-icon" style="width: 175px;">
-                <div id="todays-temp"><span id="temperature"></span>
+            <div class="others" id="current-weather-items" style="width: 100vh; height: 50vh;">
+                <h2 id="today-heading"></h2>
+                <div>
+                    <div class="weather-display">
+                        <div class="weather-info">
+                        <img src="" id="weather-icon" class="w-icon" style="width: 175px;">
+                        <div id="todays-temp"><span id="temperature"></span>
+                        </div>
+                    </div>
+        
+                    <div class="extra-info">
+                        <p></p>
+                        <p><span id="humidity">test</span></p>
+                        <p><span id="windSpeed"></span></p>
+                        <p><span id="wcurrent"></span></p>
+                        <p><span id="wfuture"></span></p>
+                    </div>  
+                    </div>
                 </div>
             </div>
 
-                <div class="extra-info">
-                <p></p>
-                <p><span id="humidity">test</span></p>
-                <p><span id="windSpeed"></span></p>
-                <p><span id="wcurrent"></span></p>
-                <p><span id="wfuture"></span></p>
-                </div>
-
-            </div>        
-    
         </div>
+        
 
-    </div>
+    <!-- Future Forecast Display -->
 
     <div class="future-forecast">
         <div class="today" id="current-temp">

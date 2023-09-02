@@ -1,5 +1,7 @@
 # Weather Dashboard
 
+https://jssmith73.github.io/Weather-Dashboard/
+
 ## Description
 
 - This weather dashboard tells the user what the weather is after entering a city name into the input and shows the 5-day forecast.
@@ -17,7 +19,7 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ## Usage
 
-![screenshot](assets/images/Screenshot (85).png)
+![screenshot](assets/images/Screenshot%20(85).png)
 
 ## Credits
 

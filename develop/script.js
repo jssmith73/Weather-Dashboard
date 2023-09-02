@@ -50,6 +50,12 @@ const temperature = document.getElementById('temperature');
 const humidity = document.getElementById('humidity');
 const windSpeed = document.getElementById('windSpeed');
 let icon = document.getElementById("weather-icon");
+let icon2 = document.getElementById("w-icon1")
+let icon3 = document.getElementById("w-icon2")
+let icon4 = document.getElementById("w-icon3")
+let icon5 = document.getElementById("w-icon4")
+let icon6 = document.getElementById("w-icon5")
+
 
 weatherForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -111,7 +117,7 @@ weatherForm.addEventListener('submit', async (e) => {
         //DATE
         document.getElementById("day1").innerHTML = `${data.list[5].dt_txt}`;
         //ICON
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[5].weather[0].icon}@2x.png`);
+        icon2.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[5].weather[0].icon}@2x.png`);
         //TEMP
         document.getElementById("temp1").textContent = `Temperature: ${data.list[5].main.temp}°F`;
         //HUMIDITY
@@ -134,7 +140,7 @@ weatherForm.addEventListener('submit', async (e) => {
         console.log(data);
 
         document.getElementById("day2").innerHTML = `${data.list[13].dt_txt}`;
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[13].weather[0].icon}@2x.png`);
+        icon3.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[13].weather[0].icon}@2x.png`);
         document.getElementById("temp2").textContent = `Temperature: ${data.list[13].main.temp}°F`;
         document.getElementById("humidity2").innerHTML = `Humidity: ${data.list[13].main.humidity}%`;
         document.getElementById("wind-speed2").innerHTML = `Wind Speed: ${data.list[13].wind.speed} m/s`;
@@ -153,7 +159,7 @@ weatherForm.addEventListener('submit', async (e) => {
         console.log(data);
 
         document.getElementById("day3").innerHTML = `${data.list[21].dt_txt}`;
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[21].weather[0].icon}@2x.png`);
+        icon4.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[21].weather[0].icon}@2x.png`);
         document.getElementById("temp3").textContent = `Temperature: ${data.list[21].main.temp}°F`;
         document.getElementById("humidity3").innerHTML = `Humidity: ${data.list[21].main.humidity}%`;
         document.getElementById("wind-speed3").innerHTML = `Wind Speed: ${data.list[21].wind.speed} m/s`;
@@ -172,7 +178,7 @@ weatherForm.addEventListener('submit', async (e) => {
         console.log(data);
 
         document.getElementById("day4").innerHTML = `${data.list[29].dt_txt}`;
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[29].weather[0].icon}@2x.png`);
+        icon5.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[29].weather[0].icon}@2x.png`);
         document.getElementById("temp4").textContent = `Temperature: ${data.list[29].main.temp}°F`;
         document.getElementById("humidity4").innerHTML = `Humidity: ${data.list[29].main.humidity}%`;
         document.getElementById("wind-speed4").innerHTML = `Wind Speed: ${data.list[29].wind.speed} m/s`;
@@ -191,7 +197,7 @@ weatherForm.addEventListener('submit', async (e) => {
         console.log(data);
         
         document.getElementById("day5").innerHTML = `${data.list[37].dt_txt}`;
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[37].weather[0].icon}@2x.png`);
+        icon6.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[37].weather[0].icon}@2x.png`);
         document.getElementById("temp5").textContent = `Temperature: ${data.list[37].main.temp}°F`;
         document.getElementById("humidity5").innerHTML = `Humidity: ${data.list[37].main.humidity}%`;
         document.getElementById("wind-speed5").innerHTML = `Wind Speed: ${data.list[37].wind.speed} m/s`;

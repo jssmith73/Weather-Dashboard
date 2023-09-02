@@ -111,7 +111,7 @@ weatherForm.addEventListener('submit', async (e) => {
         //DATE
         document.getElementById("day1").innerHTML = `${data.list[5].dt_txt}`;
         //ICON
-        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[5].weather[0].icon}.png`);
+        icon.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[5].weather[0].icon}@2x.png`);
         //TEMP
         document.getElementById("temp1").textContent = `Temperature: ${data.list[5].main.temp}°F`;
         //HUMIDITY
